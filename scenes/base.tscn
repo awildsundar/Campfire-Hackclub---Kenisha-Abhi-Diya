@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://cytyhjuyawac6"]
+
+[ext_resource type="PackedScene" uid="uid://dn5tb7tnxo443" path="res://scenes/player.tscn" id="1_pvqg0"]
+[ext_resource type="PackedScene" uid="uid://cgq4w77aohpt" path="res://scenes/ore.tscn" id="2_baglu"]
+[ext_resource type="PackedScene" uid="uid://cc7p8vp1bkcy4" path="res://scenes/shop.tscn" id="3_t45w4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pvqg0"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_baglu"]
+sky_material = SubResource("ProceduralSkyMaterial_pvqg0")
+
+[sub_resource type="Environment" id="Environment_t45w4"]
+background_mode = 2
+sky = SubResource("Sky_baglu")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Node3D" type="Node3D" unique_id=1630686396]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=579436418]
+environment = SubResource("Environment_t45w4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1269168548]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." unique_id=1006066165 instance=ExtResource("1_pvqg0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+
+[node name="Ore" parent="." unique_id=2034634133 instance=ExtResource("2_baglu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4)
+
+[node name="Ore2" parent="." unique_id=1719702787 instance=ExtResource("2_baglu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 3)
+
+[node name="Ore3" parent="." unique_id=1758575836 instance=ExtResource("2_baglu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.5, -0.5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1602667145]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(10, 1, 10)
+
+[node name="Shop" parent="." unique_id=157714277 instance=ExtResource("3_t45w4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)

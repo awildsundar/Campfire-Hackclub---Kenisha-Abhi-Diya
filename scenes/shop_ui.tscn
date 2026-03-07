@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://u2y5f13sq4p1"]
+
+[ext_resource type="Script" uid="uid://bvwjkjq5k1hlf" path="res://scripts/ShopUI.gd" id="1_fs6yy"]
+
+[node name="Control" type="Control" unique_id=1502416305]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fs6yy")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=945535401]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Panel" type="Panel" parent="MarginContainer" unique_id=1214442918]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1735267502]
+layout_mode = 2
+
+[node name="Exit" type="Button" parent="MarginContainer/HBoxContainer" unique_id=2037893276]
+layout_mode = 2
+theme_override_font_sizes/font_size = 243
+text = "X"
+
+[node name="Money" type="Label" parent="MarginContainer/HBoxContainer" unique_id=817987987]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 111
+text = "$1000000"
+horizontal_alignment = 1
+
+[node name="Convert" type="Button" parent="MarginContainer/HBoxContainer" unique_id=1054601245]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "change money"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Exit" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Convert" to="." method="_on_convert_pressed"]
