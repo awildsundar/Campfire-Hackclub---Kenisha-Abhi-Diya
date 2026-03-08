@@ -23,8 +23,8 @@ grow_vertical = 2
 theme = ExtResource("1_mrnm2")
 script = ExtResource("1_fs6yy")
 money_display = NodePath("MarginContainer/Panel/VBoxContainer/Info/Label")
-clock_out_display = NodePath("MarginContainer/MarginContainer")
-clock_out_text = NodePath("MarginContainer/MarginContainer/ClockOutPanel/VBoxContainer/Label")
+clock_out_display = NodePath("MarginContainer/Panel/VBoxContainer/Info/HBoxContainer")
+clock_out_text = NodePath("MarginContainer/Panel/VBoxContainer/Info/HBoxContainer/Label")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=945535401]
 layout_mode = 1
@@ -147,12 +147,6 @@ layout_mode = 2
 theme = ExtResource("1_mrnm2")
 theme_override_constants/separation = 30
 
-[node name="Label" type="Label" parent="MarginContainer/Panel/VBoxContainer/Info" unique_id=363702497]
-layout_mode = 2
-theme = ExtResource("1_mrnm2")
-theme_override_font_sizes/font_size = 50
-text = "   $moneys"
-
 [node name="Convert" type="Button" parent="MarginContainer/Panel/VBoxContainer/Info" unique_id=1327769015]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -160,41 +154,25 @@ size_flags_vertical = 4
 theme_override_font_sizes/font_size = 50
 text = "convert"
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer" unique_id=1733794583]
+[node name="Label" type="Label" parent="MarginContainer/Panel/VBoxContainer/Info" unique_id=363702497]
 layout_mode = 2
-theme_override_constants/margin_left = 300
-theme_override_constants/margin_top = 300
-theme_override_constants/margin_right = 300
-theme_override_constants/margin_bottom = 300
+theme = ExtResource("1_mrnm2")
+theme_override_font_sizes/font_size = 50
+text = "$moneys / quota"
 
-[node name="ClockOutPanel" type="Panel" parent="MarginContainer/MarginContainer" unique_id=86863825]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/VBoxContainer/Info" unique_id=1483442452]
 layout_mode = 2
+size_flags_horizontal = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer/ClockOutPanel" unique_id=1935106954]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -230.5
-offset_top = -121.5
-offset_right = 230.5
-offset_bottom = 121.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="MarginContainer/MarginContainer/ClockOutPanel/VBoxContainer" unique_id=916934982]
+[node name="Label" type="Label" parent="MarginContainer/Panel/VBoxContainer/Info/HBoxContainer" unique_id=1994256706]
 layout_mode = 2
-theme_override_font_sizes/font_size = 60
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 50
 text = "Quota Reached!"
-horizontal_alignment = 1
 
-[node name="ChangeScene" type="Button" parent="MarginContainer/MarginContainer/ClockOutPanel/VBoxContainer" unique_id=1921639001]
+[node name="Button" type="Button" parent="MarginContainer/Panel/VBoxContainer/Info/HBoxContainer" unique_id=657409453]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-theme_override_font_sizes/font_size = 85
+theme_override_font_sizes/font_size = 50
 text = "Clock Out"
 
 [node name="BlackScreen" type="ColorRect" parent="." unique_id=1221879061]
@@ -209,4 +187,4 @@ color = Color(0, 0, 0, 1)
 
 [connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/HBoxContainer/Exit" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/Info/Convert" to="." method="_on_convert_pressed"]
-[connection signal="pressed" from="MarginContainer/MarginContainer/ClockOutPanel/VBoxContainer/ChangeScene" to="." method="_on_clock_out_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/Info/HBoxContainer/Button" to="." method="_on_clock_out_pressed"]

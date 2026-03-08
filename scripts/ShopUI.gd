@@ -2,7 +2,7 @@ extends Control
 class_name ShopUI
 
 @export var money_display: Label
-@export var clock_out_display: MarginContainer
+@export var clock_out_display: HBoxContainer
 @export var clock_out_text: Label
 
 @onready var change_scene_button: Button = $MarginContainer/MarginContainer/ClockOutPanel/VBoxContainer/ChangeScene
@@ -24,7 +24,7 @@ func _ready() -> void:
 		Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	money = player.money
-	money_display.text = "   $" + str(money)
+	money_display.text = "$" + str(money) + " / " + str(player.owner.quota)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -37,7 +37,7 @@ func change_money(amount: float, action: ActionType) -> void:
 		ActionType.SET:
 			money = amount
 	player.money = money
-	money_display.text = "   $" + str(money)
+	money_display.text = "$" + str(money) + " / " + str(player.owner.quota)
 	
 	if player.owner.quota_reached(player.money) == true:
 		clock_out_display.show()

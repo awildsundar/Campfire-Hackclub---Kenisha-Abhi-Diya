@@ -17,11 +17,12 @@ func _ready() -> void:
 	player = owner.player
 
 func _on_button_pressed() -> void:
-	match item_type:
-		"STRENGTH":
-			player.strength = player.strength * value
-		"SPEED":
-			player.speed = player.speed * value
-	owner.change_money(price, owner.ActionType.SUBTRACT)
-	button.disabled = true
+	if player.money >= 0.0:
+		match item_type:
+			"STRENGTH":
+				player.strength = player.strength * value
+			"SPEED":
+				player.speed = player.speed * value
+		owner.change_money(price, owner.ActionType.SUBTRACT)
+		button.disabled = true
 	

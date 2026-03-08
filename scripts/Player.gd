@@ -9,7 +9,7 @@ var speed : float = 5.0
 var strength : float = 50.0
 
 var ore: int = 0
-var money: float = 0.0
+var money: float
 
 var direction: Vector3
 
