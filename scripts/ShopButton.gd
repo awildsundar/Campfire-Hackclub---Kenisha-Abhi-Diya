@@ -8,6 +8,7 @@ extends VBoxContainer
 @onready var icon_display: TextureRect = $TextureRect
 @onready var price_display: Label = $Label
 @onready var button: Button = $Button
+@onready var audio: AudioStreamPlayer = $audio
 
 var player: Player
 
@@ -17,12 +18,13 @@ func _ready() -> void:
 	player = owner.player
 
 func _on_button_pressed() -> void:
-	if player.money >= 0.0:
+	audio.play()
+	if player.money >= price:
 		match item_type:
 			"STRENGTH":
-				player.strength = player.strength * value
+				PlayerAutoloads.strength = player.base_strength * value
 			"SPEED":
-				player.speed = player.speed * value
+				PlayerAutoloads.speed = player.base_speed * value
 		owner.change_money(price, owner.ActionType.SUBTRACT)
 		button.disabled = true
 	

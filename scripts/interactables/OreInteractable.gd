@@ -10,7 +10,7 @@ func _ready() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func interact(player: Player) -> void:
-	health -= player.strength
+	health -= PlayerAutoloads.strength
 	health_bar.value = health
 	if health <= 0.0:
 		player.ore += 1

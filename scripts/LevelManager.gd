@@ -15,16 +15,22 @@ class_name LevelManager
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	var audio: AudioStreamPlayer = AudioStreamPlayer.new()
+	var stream = preload("res://assets/audio/cave ambience.mp3")
+	audio.stream = stream
+	add_child(audio)
+	audio.play()
+	
 	if cave_gen != null:
 		cave_gen.generate_cave()
 	
 	if debuff_amount != 0.0:
 		match debuff:
 			"STRENGTH":
-				player.strength = player.strength * debuff_amount
+				PlayerAutoloads.strength = PlayerAutoloads.strength * debuff_amount
 				debuff_text.text = "You feel weaker..."
 			"SPEED":
-				player.speed = player.speed * debuff_amount
+				PlayerAutoloads.speed = PlayerAutoloads.speed * debuff_amount
 				debuff_text.text = "You feel slower..."
 		
 		await get_tree().create_timer(debuff_text_time/2).timeout

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bvx7c5sgltyhw"
+path="res://.godot/imported/pickaxe hit.mp3-63d16d2bc376ba2624c630a021091e29.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/pickaxe hit.mp3"
+dest_files=["res://.godot/imported/pickaxe hit.mp3-63d16d2bc376ba2624c630a021091e29.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

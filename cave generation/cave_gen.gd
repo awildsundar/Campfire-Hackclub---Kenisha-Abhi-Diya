@@ -44,7 +44,8 @@ func generate_cave() -> void:
 	
 	get_connecting_rooms()
 	scatter_ores()
-	set_locations()
+	if Engine.is_editor_hint() == false:
+		set_locations()
 func can_place(pos: Vector3) -> bool:
 	if not cave:
 		return true
@@ -126,6 +127,7 @@ func set_locations() -> void:
 	var rand_pos = room.global_position
 	player.global_position = Vector3(rand_pos.x, 0.0, rand_pos.z)
 	shop.global_position = player.global_position
+	shop.global_transform
 
 func delete_cave() -> void:
 	for i in cave:

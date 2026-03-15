@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://76cofs1ni48w"]
 
 [ext_resource type="Script" uid="uid://xaniuoyudng5" path="res://scripts/FinalChoices.gd" id="1_jjijt"]
+[ext_resource type="AudioStream" uid="uid://lqtacakmk2jg" path="res://assets/audio/button sfx.mp3" id="2_my61i"]
 
 [node name="HBoxContainer" type="HBoxContainer" unique_id=1765726187]
 size_flags_vertical = 3
@@ -18,6 +19,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 60
 text = "Decline"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1924774572]
+stream = ExtResource("2_my61i")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_pressed"]

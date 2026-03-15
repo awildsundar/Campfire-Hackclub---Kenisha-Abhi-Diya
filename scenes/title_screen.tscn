@@ -3,6 +3,34 @@
 [ext_resource type="Texture2D" uid="uid://b8nlpak011lxh" path="res://assets/images/main menu.png" id="1_fgkus"]
 [ext_resource type="Script" uid="uid://b4yufnhdfdy3l" path="res://scripts/title_screen.gd" id="1_s4lrb"]
 [ext_resource type="FontFile" uid="uid://bgyfdxw8fnhuf" path="res://assets/fonts/MonasDemoRegular-eZl86.ttf" id="2_sa3yf"]
+[ext_resource type="Theme" uid="uid://dr7t61amrosi4" path="res://assets/default.tres" id="4_mgrm8"]
+[ext_resource type="AudioStream" uid="uid://lqtacakmk2jg" path="res://assets/audio/button sfx.mp3" id="5_dc4i4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4lrb"]
+bg_color = Color(0.78089076, 0.73633325, 0.38264942, 1)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.08627451, 0.18431373, 0.05882353, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgrm8"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+bg_color = Color(0.08627451, 0.18431373, 0.05882353, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e54dn"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+bg_color = Color(0.021530299, 0.06928278, 0.012826848, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dc4i4"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+bg_color = Color(0.15289164, 0.29741195, 0.11241134, 1)
 
 [node name="Control" type="Control" unique_id=2818038]
 layout_mode = 3
@@ -36,6 +64,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1106287415]
 layout_mode = 2
+size_flags_vertical = 6
 theme_override_colors/font_color = Color(0.3466936, 0.55929714, 0, 1)
 theme_override_fonts/font = ExtResource("2_sa3yf")
 theme_override_font_sizes/font_size = 300
@@ -48,4 +77,67 @@ theme_override_fonts/font = ExtResource("2_sa3yf")
 theme_override_font_sizes/font_size = 50
 text = "Clock In"
 
+[node name="Button2" type="Button" parent="CenterContainer/VBoxContainer" unique_id=818742973]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_sa3yf")
+theme_override_font_sizes/font_size = 50
+text = "Credits"
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=492524445]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="PanelContainer" unique_id=1208539525]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_s4lrb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Panel" unique_id=1132708864]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -458.5
+offset_top = -22.5
+offset_right = 458.5
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="PanelContainer/Panel/VBoxContainer" unique_id=1189808825]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("2_sa3yf")
+theme_override_font_sizes/font_size = 75
+text = "Programming: Kenisha Roy
+Art: Diya
+Music/SFX: Pixabay (linked in desc)
+Misc: Abhi"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="PanelContainer/Panel/VBoxContainer" unique_id=1745395901]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme = ExtResource("4_mgrm8")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_mgrm8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_e54dn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dc4i4")
+text = "Close"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=182951631]
+stream = ExtResource("5_dc4i4")
+
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="PanelContainer/Panel/VBoxContainer/Button" to="." method="_on_exit_button_pressed"]

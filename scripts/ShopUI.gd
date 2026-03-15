@@ -5,9 +5,11 @@ class_name ShopUI
 @export var clock_out_display: HBoxContainer
 @export var clock_out_text: Label
 
-@onready var change_scene_button: Button = $MarginContainer/MarginContainer/ClockOutPanel/VBoxContainer/ChangeScene
-@onready var clock_out_container: VBoxContainer = $MarginContainer/MarginContainer/ClockOutPanel/VBoxContainer
+@onready var change_scene_button: Button = $MarginContainer/Panel/VBoxContainer/Info/HBoxContainer/Button
+@onready var clock_out_container: HBoxContainer = $MarginContainer/Panel/VBoxContainer/Info/HBoxContainer
 @onready var black_screen: ColorRect = $BlackScreen
+@onready var button_sfx: AudioStreamPlayer = $button_sfx
+@onready var money_sfx: AudioStreamPlayer = $money_sfx
 
 enum ActionType {ADD, SUBTRACT, SET}
 var player: Player = null
@@ -42,7 +44,7 @@ func change_money(amount: float, action: ActionType) -> void:
 	if player.owner.quota_reached(player.money) == true:
 		clock_out_display.show()
 		if player.owner.day_number == 5:
-			clock_out_text.text = "We'd like to meet with you..."
+			clock_out_text.text = "We'd like to promote you..."
 			change_scene_button.queue_free()
 			var choices = preload("res://scenes/final_choice.tscn").instantiate()
 			choices.black_screen = black_screen
@@ -51,6 +53,7 @@ func change_money(amount: float, action: ActionType) -> void:
 	
 
 func _on_exit_button_pressed() -> void:
+	button_sfx.play()
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "position", Vector2(0.0, 1080.0), 0.25).set_trans(
 		Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
@@ -59,9 +62,11 @@ func _on_exit_button_pressed() -> void:
 	queue_free()
 
 func _on_convert_pressed() -> void:
+	money_sfx.play()
 	var converted: float = player.ore * rate
 	change_money(converted, ShopUI.ActionType.ADD)
 	player.ore = 0
 
 func _on_clock_out_pressed() -> void:
+	button_sfx.play()
 	get_tree().change_scene_to_packed(next_level)

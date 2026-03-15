@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://jyblxmprd3gw" path="res://scripts/Player.gd" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://3raisyjt3sy5" path="res://scripts/Camera.gd" id="2_g2els"]
 [ext_resource type="Texture2D" uid="uid://ivrem62aodba" path="res://assets/animatinos/default.tres" id="3_qhqgy"]
+[ext_resource type="AudioStream" uid="uid://bnu5wi8jkkfak" path="res://assets/audio/footsteps sfx.mp3" id="4_dqkch"]
+[ext_resource type="FontFile" uid="uid://bgyfdxw8fnhuf" path="res://assets/fonts/MonasDemoRegular-eZl86.ttf" id="4_tuyoq"]
+[ext_resource type="AudioStream" uid="uid://bvx7c5sgltyhw" path="res://assets/audio/pickaxe hit.mp3" id="5_qlg0r"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
 
@@ -55,13 +58,28 @@ theme_override_constants/margin_bottom = 50
 [node name="Label" type="Label" parent="Control" unique_id=1376350525]
 layout_mode = 2
 size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("4_tuyoq")
 theme_override_font_sizes/font_size = 75
 text = "Ores: 0"
 horizontal_alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=82407455]
+[node name="InteractIndicator" type="CenterContainer" parent="." unique_id=82407455]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="InteractIndicator" unique_id=1405873606]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_tuyoq")
+theme_override_font_sizes/font_size = 60
+text = "(E)"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1152251452]
+stream = ExtResource("4_dqkch")
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="." unique_id=1804119198]
+stream = ExtResource("5_qlg0r")

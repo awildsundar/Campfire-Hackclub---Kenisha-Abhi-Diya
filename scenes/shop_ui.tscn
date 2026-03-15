@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://b52dujp05lofw" path="res://assets/images/pick 3.png" id="5_s287r"]
 [ext_resource type="Texture2D" uid="uid://0wvddxx4jn81" path="res://assets/images/level 4 speed.png" id="6_t3xdf"]
 [ext_resource type="Texture2D" uid="uid://8uu4dlcr26ro" path="res://assets/images/pick 4.png" id="11_s287r"]
+[ext_resource type="AudioStream" uid="uid://lqtacakmk2jg" path="res://assets/audio/button sfx.mp3" id="13_y4j81"]
+[ext_resource type="AudioStream" uid="uid://dqty4o03enqh" path="res://assets/audio/convert sfx.mp3" id="14_ijxsd"]
 
 [node name="Control" type="Control" unique_id=1502416305 node_paths=PackedStringArray("money_display", "clock_out_display", "clock_out_text")]
 layout_mode = 3
@@ -82,7 +84,7 @@ layout_mode = 2
 icon = ExtResource("3_usj2y")
 item_type = "SPEED"
 price = 150.0
-value = 5.0
+value = 1.5
 
 [node name="Panel2" parent="MarginContainer/Panel/VBoxContainer/Speed Options" unique_id=311597210 instance=ExtResource("2_oixfk")]
 layout_mode = 2
@@ -184,6 +186,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="button_sfx" type="AudioStreamPlayer" parent="." unique_id=793682563]
+stream = ExtResource("13_y4j81")
+
+[node name="money_sfx" type="AudioStreamPlayer" parent="." unique_id=1259472310]
+stream = ExtResource("14_ijxsd")
 
 [connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/HBoxContainer/Exit" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/Info/Convert" to="." method="_on_convert_pressed"]

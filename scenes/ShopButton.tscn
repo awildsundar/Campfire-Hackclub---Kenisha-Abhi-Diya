@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c7xy615uykgdi" path="res://scripts/ShopButton.gd" id="1_yojg0"]
 [ext_resource type="Texture2D" uid="uid://8uu4dlcr26ro" path="res://assets/images/pick 4.png" id="2_yojg0"]
+[ext_resource type="AudioStream" uid="uid://lqtacakmk2jg" path="res://assets/audio/button sfx.mp3" id="3_b3pg5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yojg0"]
 bg_color = Color(0.13155001, 0.19186041, 0.049824752, 1)
@@ -42,5 +43,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 10
 theme_override_styles/normal = SubResource("StyleBoxFlat_yojg0")
 text = "PAY"
+
+[node name="audio" type="AudioStreamPlayer" parent="." unique_id=1717033041]
+stream = ExtResource("3_b3pg5")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
